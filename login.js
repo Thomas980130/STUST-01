@@ -13,7 +13,7 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
 
     try {
         // 使用 fetch 發送 POST 請求
-        const response = await fetch('https://script.google.com/macros/s/AKfycbw9Lu74oo49MUZl48p7ptkHb5l_ZODiGu_-JQWaDMJ_S-gbbb-ede0aOhM2RSvj8p-S/exec', {
+        const response = await fetch('https://script.google.com/macros/s/AKfycbyjhYaIp7_mWKNV7Eju8mp4FpM8Y6mCmd4ISSwlwK4fIrgEGLqezPFg2PdAFCo91kpl/exec', {
             method: 'POST',
             mode: 'cors', // ✅ 確保跨域模式
             headers: {
