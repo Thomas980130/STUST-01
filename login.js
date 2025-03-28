@@ -12,7 +12,7 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
     };
 
     try {
-        const response = await fetch('https://script.google.com/macros/s/AKfycbyjhYaIp7_mWKNV7Eju8mp4FpM8Y6mCmd4ISSwlwK4fIrgEGLqezPFg2PdAFCo91kpl/exec', {
+        const response = await fetch('https://cors-anywhere.herokuapp.com/https://script.google.com/macros/s/AKfycbyjhYaIp7_mWKNV7Eju8mp4FpM8Y6mCmd4ISSwlwK4fIrgEGLqezPFg2PdAFCo91kpl/exec', {
             method: 'POST',
             mode: 'cors', // 確保跨域模式
             headers: {
