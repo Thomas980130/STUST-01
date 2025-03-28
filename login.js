@@ -7,27 +7,18 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     };
 
     try {
-        const response = await fetch(
-            'https://script.google.com/macros/s/AKfycbw9Lu74oo49MUZl48p7ptkHb5l_ZODiGu_-JQWaDMJ_S-gbbb-ede0aOhM2RSvj8p-S/exec', 
-            {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData),
-                credentials: 'include'  // 处理跨域cookie
-            }
-        );
-
-        const rawResponse = await response.text(); // 先获取原始响应
-        console.log("原始响应:", rawResponse);
+        const response = await fetch('https://script.google.com/macros/library/d/1n1FvKu8ZYkeHd2aaPbtxakUC0XjeYIWjVttl8511E_jaZWtaS4J4PgDp/4', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData) // 确保转换为 JSON 字符串
+        });
         
-        try {
-            const data = JSON.parse(rawResponse);
-            console.log('JSON解析结果:', data);
-        } catch (e) {
-            console.error('响应不是有效JSON:', rawResponse);
-        }
+        const data = await response.json();
+        console.log('响应数据:', data);
     } catch (error) {
-        console.error('完整错误信息:', {
+        console.error('完整错误:', {
             name: error.name,
             message: error.message,
             stack: error.stack
