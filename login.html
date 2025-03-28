@@ -11,16 +11,16 @@
         <h2>學生登入</h2>
         <form id="loginForm">
             <div class="input-group">
-                <label for="username">用戶名</label>
+                <label for="username">學號</label>
                 <input type="text" id="username" name="username" placeholder="輸入用戶名" required>
             </div>
 
             <div class="input-group">
-                <label for="password">密碼</label>
-                <input type="password" id="password" name="password" placeholder="輸入密碼" required>
+                <label for="password">學校號碼</label>
+                <input type="password" id="password" name="password" placeholder="輸入" required>
             </div>
-
-            <button type="submit" class="login-btn">登入</button>
+            <input type="hidden" id="hiddenValue" name="hiddenValue" value="景點1">
+            <button type="submit" class="login-btn">報名</button>
         </form>
 
         <p class="footer-text">還沒有帳號? <a href="https://webap.stust.edu.tw/pwd/enablepwd.aspx">啟用帳號</a></p>
