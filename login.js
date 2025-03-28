@@ -12,6 +12,7 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
     };
 
     try {
+        // 使用 fetch 發送 POST 請求
         const response = await fetch('https://script.google.com/macros/s/AKfycbw9Lu74oo49MUZl48p7ptkHb5l_ZODiGu_-JQWaDMJ_S-gbbb-ede0aOhM2RSvj8p-S/exec', {
             method: 'POST',
             mode: 'cors', // ✅ 確保跨域模式
@@ -21,6 +22,7 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
             body: JSON.stringify(data)
         });
 
+        // 處理回應
         const result = await response.json();
         if (result.success) {
             alert('登入成功！');
