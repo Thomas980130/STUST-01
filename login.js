@@ -5,7 +5,7 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
       password: document.getElementById('password').value
     };
   
-    fetch('https://script.google.com/macros/library/d/1n1FvKu8ZYkeHd2aaPbtxakUC0XjeYIWjVttl8511E_jaZWtaS4J4PgDp/2', {
+    fetch('https://script.google.com/macros/s/AKfycbw9Lu74oo49MUZl48p7ptkHb5l_ZODiGu_-JQWaDMJ_S-gbbb-ede0aOhM2RSvj8p-S/exec', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData)
