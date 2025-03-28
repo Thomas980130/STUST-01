@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>學生登入</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>學生登入</h2>
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="username">用戶名</label>
+                <input type="text" id="username" name="username" placeholder="輸入用戶名" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">密碼</label>
+                <input type="password" id="password" name="password" placeholder="輸入密碼" required>
+            </div>
+
+            <button type="submit" class="login-btn">登入</button>
+        </form>
+
+        <p class="footer-text">還沒有帳號? <a href="https://webap.stust.edu.tw/pwd/enablepwd.aspx">啟用帳號</a></p>
+    </div>
+
+
+    <script src="login.js"></script>
+</body>
+</html>
