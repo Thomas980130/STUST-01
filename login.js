@@ -1,4 +1,4 @@
-const corsProxyUrl = 'https://cors.io/?';  // 這是 CORS 代理服務的 URL
+const corsProxyUrl = 'https://cors-anywhere.herokuapp.com/';
 const targetUrl = 'https://script.google.com/macros/s/AKfycbw9Lu74oo49MUZl48p7ptkHb5l_ZODiGu_-JQWaDMJ_S-gbbb-ede0aOhM2RSvj8p-S/exec';
 
 document.getElementById('loginForm').addEventListener('submit', async (event) => {
@@ -15,7 +15,7 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
     };
 
     try {
-        // 使用 CORS 代理服務來繞過 CORS 問題
+        // 使用 CORS Anywhere 代理服務來繞過 CORS 問題
         const response = await fetch(`${corsProxyUrl}${targetUrl}`, {
             method: 'POST',
             headers: {
