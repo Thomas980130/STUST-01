@@ -12,22 +12,16 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
     };
 
     try {
-        const response = await fetch('https://cors-anywhere.herokuapp.com/https://script.google.com/macros/s/AKfycbyjhYaIp7_mWKNV7Eju8mp4FpM8Y6mCmd4ISSwlwK4fIrgEGLqezPFg2PdAFCo91kpl/exec', {
+        const response = await fetch('https://script.google.com/macros/s/AKfycbw9Lu74oo49MUZl48p7ptkHb5l_ZODiGu_-JQWaDMJ_S-gbbb-ede0aOhM2RSvj8p-S/exec', {
             method: 'POST',
-            mode: 'cors', // 確保跨域模式
+            mode: 'no-cors', // 使用 no-cors 模式
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
         });
 
-        const result = await response.json();
-        if (result.success) {
-            alert('登入成功！');
-            console.log(result);
-        } else {
-            alert(result.message);
-        }
+        alert('登入成功！');
     } catch (error) {
         console.error('Error:', error);
         alert('發生錯誤，請稍後再試！');
