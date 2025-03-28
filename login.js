@@ -1,6 +1,3 @@
-const corsProxyUrl = 'https://cors-anywhere.herokuapp.com/';
-const targetUrl = 'https://script.google.com/macros/s/AKfycbw9Lu74oo49MUZl48p7ptkHb5l_ZODiGu_-JQWaDMJ_S-gbbb-ede0aOhM2RSvj8p-S/exec';
-
 document.getElementById('loginForm').addEventListener('submit', async (event) => {
     event.preventDefault();
 
@@ -15,14 +12,15 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
     };
 
     try {
-        // 使用 CORS Anywhere 代理服務來繞過 CORS 問題
-        const response = await fetch(`${corsProxyUrl}${targetUrl}`, {
+        // 使用 AllOrigins 代理
+        const proxyUrl = 'https://api.allorigins.win/raw?url=';
+        const targetUrl = 'https://script.google.com/macros/s/AKfycbw9Lu74oo49MUZl48p7ptkHb5l_ZODiGu_-JQWaDMJ_S-gbbb-ede0aOhM2RSvj8p-S/exec'; // 你的目標 URL
+        const response = await fetch(proxyUrl + encodeURIComponent(targetUrl), {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest'
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(data),
         });
 
         const result = await response.json();
