@@ -3,33 +3,25 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
 
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
-    const hiddenValue = "景點1"; // 固定隱藏值
+    const hiddenValue = "景點1"; // ✅ 固定隱藏值
 
-    const data = {
-        username,
-        password,
-        hiddenValue
-    };
+    const data = `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}&hiddenValue=${encodeURIComponent(hiddenValue)}`;
 
     try {
-        const proxyUrl = 'https://api.allorigins.win/raw?url=';
-        const targetUrl = 'https://script.google.com/macros/s/AKfycbw9Lu74oo49MUZl48p7ptkHb5l_ZODiGu_-JQWaDMJ_S-gbbb-ede0aOhM2RSvj8p-S/exec'; // 目標 URL
-        const response = await fetch(proxyUrl + encodeURIComponent(targetUrl), {
+        const response = await fetch('https://script.google.com/macros/s/AKfycbw9Lu74oo49MUZl48p7ptkHb5l_ZODiGu_-JQWaDMJ_S-gbbb-ede0aOhM2RSvj8p-S/exec', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'text/plain' // ✅ 避免觸發 CORS 預檢請求
             },
-            body: JSON.stringify(data),
+            body: data
         });
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
 
         const result = await response.json();
         if (result.success) {
             alert('登入成功！');
             console.log(result);
+            // ✅ 登入成功後跳轉或更新頁面
+            window.location.href = 'dashboard.html';
         } else {
             alert(result.message);
         }
