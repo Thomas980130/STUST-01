@@ -5,33 +5,34 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
     const password = document.getElementById('password').value;
     const hiddenValue = "景點1"; // ✅ 固定隱藏值
 
-    const data = `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}&hiddenValue=${encodeURIComponent(hiddenValue)}`;
+    const data = new URLSearchParams();
+    data.append('username', username);
+    data.append('password', password);
+    data.append('hiddenValue', hiddenValue);
 
     try {
-        const response = await fetch('https://api.allorigins.win/raw?url=' + encodeURIComponent('https://script.google.com/macros/s/AKfycbw9Lu74oo49MUZl48p7ptkHb5l_ZODiGu_-JQWaDMJ_S-gbbb-ede0aOhM2RSvj8p-S/exec'), {
+        const response = await fetch('https://script.google.com/macros/s/AKfycbw9Lu74oo49MUZl48p7ptkHb5l_ZODiGu_-JQWaDMJ_S-gbbb-ede0aOhM2RSvj8p-S/exec', {
             method: 'POST',
             headers: {
-                'Content-Type': 'text/plain'
+                'Content-Type': 'application/x-www-form-urlencoded' // ✅ 重要修正
             },
             body: data
         });
 
-        // ✅ 強制將回應處理成純文字再解析 JSON
-        const text = await response.text();
-        console.log('Raw Response:', text);
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
 
-        try {
-            const result = JSON.parse(text);
-            if (result.success) {
-                alert('登入成功！');
-                console.log(result);
-                window.location.href = 'dashboard.html';
-            } else {
-                alert(result.message);
-            }
-        } catch (jsonError) {
-            console.error('JSON Parse Error:', jsonError);
-            alert('回應內容無效，請稍後再試！');
+        // ✅ 轉為 JSON 格式
+        const result = await response.json();
+        console.log('Result:', result);
+
+        if (result.success) {
+            alert('登入成功！');
+            console.log(result);
+            window.location.href = 'dashboard.html';
+        } else {
+            alert(result.message);
         }
     } catch (error) {
         console.error('Error:', error);
