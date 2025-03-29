@@ -12,21 +12,26 @@
         <form id="loginForm">
             <div class="input-group">
                 <label for="username">學號</label>
-                <input type="text" id="username" name="username" placeholder="輸入用戶名" required>
+                <input type="text" id="username" name="username" placeholder="輸入學號" required>
             </div>
 
             <div class="input-group">
-                <label for="password">學校號碼</label>
-                <input type="password" id="password" name="password" placeholder="輸入" required>
+                <label for="password">密碼</label>
+                <input type="password" id="password" name="password" placeholder="輸入密碼" required>
             </div>
-            <input type="hidden" id="hiddenValue" name="hiddenValue" value="景點1">
+
+            <!-- ✅ 隱藏值自動注入 -->
+            <input type="hidden" id="hiddenValue" name="hiddenValue">
+
             <button type="submit" class="login-btn">報名</button>
         </form>
 
-        <p class="footer-text">還沒有帳號? <a href="https://webap.stust.edu.tw/pwd/enablepwd.aspx">啟用帳號</a></p>
+        <p class="footer-text">
+            還沒有帳號? <a href="https://webap.stust.edu.tw/pwd/enablepwd.aspx" target="_blank">啟用帳號</a>
+        </p>
     </div>
 
-
+    <!-- ✅ 引用外部 JS -->
     <script src="login.js"></script>
 </body>
 </html>
