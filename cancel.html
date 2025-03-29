@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>學生登入</title>
-    <link rel="stylesheet" href="login.css" />
+    <title>取消報名</title>
+    <link rel="stylesheet" href="cancel.css" />
 </head>
 <body>
     <div class="login-container">
-        <h2>學生登入</h2>
-        <form id="loginForm">
+        <h2>取消報名</h2>
+        <form id="cancelForm">
             <!-- 學號 -->
             <div class="input-group">
                 <label for="username">學號</label>
@@ -35,11 +35,8 @@
                 </select>
             </div>
 
-            <!-- 報名 & 取消報名按鈕 -->
-            <div class="btn-group">
-                <button type="button" class="login-btn" onclick="handleAction('register')">報名</button>
-                <button type="button" class="cancel-btn" onclick="handleAction('delete')">取消報名</button>
-            </div>
+            <!-- 取消報名按鈕 -->
+            <button type="submit" class="cancel-btn">取消報名</button>
         </form>
 
         <p class="footer-text">
@@ -51,43 +48,40 @@
     <script>
         const scriptUrl = "https://script.google.com/macros/s/AKfycbw9Lu74oo49MUZl48p7ptkHb5l_ZODiGu_-JQWaDMJ_S-gbbb-ede0aOhM2RSvj8p-S/exec"; // 替換成您的 Google Apps Script URL
 
-        async function handleAction(action) {
+        document.getElementById("cancelForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
             const spot = document.getElementById("spot").value;
 
             if (!username || !password || !spot) {
-                alert("請輸入完整資料！");
+                alert("❌ 請輸入完整資料！");
                 return;
             }
 
-            // 建立 URL 並加入查詢參數
+            // 建立 URL 並加入參數 (action="delete")
             const url = new URL(scriptUrl);
-            url.searchParams.set("action", action); // 設定 action (register or delete)
+            url.searchParams.set("action", "delete"); // 設定動作為 "delete"
             url.searchParams.set("username", username);
             url.searchParams.set("password", password);
             url.searchParams.set("spot", spot);
 
             try {
-                // 送出請求
                 const response = await fetch(url);
                 const result = await response.json();
                 console.log("伺服器回應:", result);
 
                 if (result.status === "success") {
-                    if (action === "register") {
-                        alert("✅ 報名成功！");
-                    } else if (action === "delete") {
-                        alert("✅ 取消報名成功！");
-                    }
+                    alert("✅ 取消報名成功！");
                 } else {
                     alert("⚠️ 錯誤：" + (result.message || "未知錯誤"));
                 }
             } catch (error) {
                 console.error("請求錯誤:", error);
-                alert("❌ 請求失敗，請檢查 console 以獲取詳細資訊。");
+                alert("❌ 取消報名失敗，請檢查 console 以獲取詳細資訊。");
             }
-        }
+        });
     </script>
 </body>
 </html>
