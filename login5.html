@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>學生登入</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>學生登入</h2>
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="username">學號</label>
+                <input type="text" id="username" name="username" placeholder="輸入用戶名" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">密碼</label>
+                <input type="password" id="password" name="password" placeholder="輸入" required>
+            </div>
+
+            <!-- 隱藏景點欄位並設置固定值 -->
+            <input type="hidden" id="spot" name="spot" value="安平古堡">
+
+            <button type="submit" class="login-btn">報名</button>
+        </form>
+
+        <p class="footer-text">還沒有帳號? <a href="https://webap.stust.edu.tw/pwd/enablepwd.aspx">啟用帳號</a></p>
+    </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const scriptUrl = "https://script.google.com/macros/s/AKfycbw9Lu74oo49MUZl48p7ptkHb5l_ZODiGu_-JQWaDMJ_S-gbbb-ede0aOhM2RSvj8p-S/exec"; // 替換成您的 Google Apps Script URL
+
+            // 創建 URL 並加入查詢參數
+            const url = new URL(scriptUrl);
+            url.searchParams.set("username", document.getElementById("username").value);
+            url.searchParams.set("password", document.getElementById("password").value);
+            url.searchParams.set("spot", document.getElementById("spot").value); // 傳送隱藏的景點值
+
+            try {
+                // 使用 GET 請求傳送資料
+                const response = await fetch(url);
+                const result = await response.json();
+                console.log("伺服器回應:", result);
+
+                if (result.status === "success") {
+                    alert("資料送出成功！");
+                } else {
+                    alert("錯誤：" + (result.message || "未知錯誤"));
+                }
+            } catch (error) {
+                console.error("請求錯誤:", error);
+                alert("請求失敗，請檢查 console 以獲取詳細資訊。");
+            }
+        });
+    </script>
+
+</body>
+</html>
