@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>學生登入</title>
+    <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+    <div class="login-container">
+        <h2>學生登入</h2>
+        <form id="loginForm">
+            <!-- 學號 -->
+            <div class="input-group">
+                <label for="username">學號</label>
+                <input type="text" id="username" name="username" placeholder="輸入用戶名" required />
+            </div>
+
+            <!-- 密碼 -->
+            <div class="input-group">
+                <label for="password">學校號碼</label>
+                <input type="password" id="password" name="password" placeholder="輸入" required />
+            </div>
+
+            <!-- 選擇景點 -->
+            <div class="input-group">
+                <label for="spot">選擇景點</label>
+                <select id="spot" name="spot" required>
+                    <option value="景點1">景點1</option>
+                    <option value="景點2">景點2</option>
+                    <option value="景點3">景點3</option>
+                    <option value="景點4">景點4</option>
+                    <option value="景點5">景點5</option>
+                    <option value="景點6">景點6</option>
+                </select>
+            </div>
+
+            <!-- 報名 & 取消報名按鈕 -->
+            <div class="btn-group">
+                <button type="button" class="login-btn" onclick="handleAction('register')">報名</button>
+                <button type="button" class="cancel-btn" onclick="handleAction('delete')">取消報名</button>
+            </div>
+        </form>
+
+        <p class="footer-text">
+            還沒有帳號? 
+            <a href="https://webap.stust.edu.tw/pwd/enablepwd.aspx">啟用帳號</a>
+        </p>
+    </div>
+
+    <script>
+        const scriptUrl = "https://script.google.com/macros/s/AKfycbw9Lu74oo49MUZl48p7ptkHb5l_ZODiGu_-JQWaDMJ_S-gbbb-ede0aOhM2RSvj8p-S/exec"; // 替換成您的 Google Apps Script URL
+
+        async function handleAction(action) {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const spot = document.getElementById("spot").value;
+
+            if (!username || !password || !spot) {
+                alert("請輸入完整資料！");
+                return;
+            }
+
+            // 建立 URL 並加入查詢參數
+            const url = new URL(scriptUrl);
+            url.searchParams.set("action", action); // 設定 action (register or delete)
+            url.searchParams.set("username", username);
+            url.searchParams.set("password", password);
+            url.searchParams.set("spot", spot);
+
+            try {
+                // 送出請求
+                const response = await fetch(url);
+                const result = await response.json();
+                console.log("伺服器回應:", result);
+
+                if (result.status === "success") {
+                    if (action === "register") {
+                        alert("✅ 報名成功！");
+                    } else if (action === "delete") {
+                        alert("✅ 取消報名成功！");
+                    }
+                } else {
+                    alert("⚠️ 錯誤：" + (result.message || "未知錯誤"));
+                }
+            } catch (error) {
+                console.error("請求錯誤:", error);
+                alert("❌ 請求失敗，請檢查 console 以獲取詳細資訊。");
+            }
+        }
+    </script>
+</body>
+</html>
