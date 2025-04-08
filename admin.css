@@ -1,0 +1,104 @@
+/* 全頁背景 */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+h2 {
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* 登入容器 */
+.login-container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* 輸入框 */
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    font-size: 14px;
+    color: #666;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #000000;
+    outline: none;
+}
+
+/* 登入按鈕 */
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #236cf1;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #2b72f7;
+    transform: scale(1.1); /* 放大效果 */
+}
+
+/* 註冊提示文字 */
+.footer-text {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #666;
+}
+
+.footer-text a {
+    color: #0eabe9;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.footer-text a:hover {
+    color: #45a049;
+}
+
+/* 錯誤訊息 */
+.error {
+    color: red;
+    margin-top: 10px;
+}
+/* 版權文字（小一點）*/
+.copyright {
+    margin-top: 20px;
+    font-size: 15px;
+    color: #bbb;
+    text-align: center;
+}

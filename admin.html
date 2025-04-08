@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>學生登入</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<div class="login-container">
+  <h2>管理員登入</h2>
+
+  <!-- 使用表單包裹 -->
+  <form onsubmit="login(); return false;">
+    <div class="input-group">
+      <label for="username">帳號</label>
+      <input type="text" id="username" placeholder="輸入帳號" required>
+    </div>
+
+    <div class="input-group">
+      <label for="password">密碼</label>
+      <input type="password" id="password" placeholder="輸入密碼" required>
+    </div>
+
+    <button class="login-btn" type="submit">登入</button>
+    <div class="error" id="errorMsg"></div>
+  </form>
+
+  <div class="copyright">© 2025 小白製作 login</div>
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>
