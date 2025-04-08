@@ -6,24 +6,27 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    padding: 20px; /* 讓手機邊界不要貼邊 */
+    box-sizing: border-box;
 }
 
 h2 {
     color: #333;
-    font-size: 28px;
+    font-size: 24px;
     margin-bottom: 20px;
 }
 
 /* 登入容器 */
 .login-container {
     background-color: #ffffff;
-    padding: 40px;
+    padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 400px;
     text-align: center;
+    box-sizing: border-box;
 }
 
 /* 輸入框 */
@@ -69,36 +72,20 @@ h2 {
 
 .login-btn:hover {
     background-color: #2b72f7;
-    transform: scale(1.1); /* 放大效果 */
-}
-
-/* 註冊提示文字 */
-.footer-text {
-    margin-top: 15px;
-    font-size: 14px;
-    color: #666;
-}
-
-.footer-text a {
-    color: #0eabe9;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s;
-}
-
-.footer-text a:hover {
-    color: #45a049;
+    transform: scale(1.05); /* 手機上 hover 不太適用，縮小放大也調整 */
 }
 
 /* 錯誤訊息 */
 .error {
     color: red;
     margin-top: 10px;
+    font-size: 14px;
 }
-/* 版權文字（小一點）*/
+
+/* 版權文字 */
 .copyright {
     margin-top: 20px;
-    font-size: 15px;
+    font-size: 12px;
     color: #bbb;
     text-align: center;
 }
