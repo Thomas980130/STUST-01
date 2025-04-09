@@ -1,9 +1,9 @@
 // 已加密的帳號密碼（SHA-256 雜湊）
 // 帳號：admin → SHA256: 8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
-// 密碼：admin987654321 → SHA256: 8a0a09d1cf3b16b5e1ee83d749bb7ef1c6bdfcfb79907e4c6de8f2711d64f15d
+// 密碼：admin980130 → SHA256: 9f0d8a6de1729b56c43130e145cf125535330b3916a9f0fdf2be66de43cd90ec
 const accounts = {
   "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918":
-  "8a0a09d1cf3b16b5e1ee83d749bb7ef1c6bdfcfb79907e4c6de8f2711d64f15d"
+  "9f0d8a6de1729b56c43130e145cf125535330b3916a9f0fdf2be66de43cd90ec"
 };
 
 // 使用 Base64 編碼的 Google 試算表網址
